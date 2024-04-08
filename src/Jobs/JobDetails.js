@@ -22,7 +22,7 @@ const JobDetails = () => {
     const fetchInternships = async () => {
       try {
         const response = await axios.get(
-          "https://intern-backend-fop1.onrender.com/api/job"
+          "https://internshala-clone-backend.onrender.com/api/job"
           // "http://localhost:5000/api/job"
         );
         setInternships(response.data); // Assuming response.data is an array of internships
@@ -108,23 +108,12 @@ const JobDetails = () => {
               {internship.location}
             </p>
             <p className="text-gray-600 mb-2">
-              <span className="font-semibold">Duration:</span>{" "}
-              {internship.duration}
-            </p>
-            <p className="text-gray-600 mb-2">
-              <span className="font-semibold">Stipend:</span>{" "}
-              {internship.stipend}
-            </p>
-            <p className="text-gray-600 mb-2">
-              <span className="font-semibold">Type:</span> {internship.type}
+              <span className="font-semibold">CTC:</span>{" "}
+              {internship?.CTC}
             </p>
             <p className="text-gray-600 mb-2">
               <span className="font-semibold">About Company:</span>{" "}
               {internship.aboutCompany}
-            </p>
-            <p className="text-gray-600 mb-2">
-              <span className="font-semibold">Who Can Apply:</span>{" "}
-              {internship.whoCanApply}
             </p>
             <button
               onClick={() => openPopup(internship)}

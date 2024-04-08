@@ -9,8 +9,9 @@ const PostJob = () => {
   const [title, setTitle] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [location, setLocation] = useState("");
+  const [duration, setDuration] = useState("");
   const [category, setCategory] = useState("");
-  const [ctc, setCtc] = useState("");
+  const [CTC, setCTC] = useState("");
   const [aboutCompany, setAboutCompany] = useState("");
   const [whoCanApply, setWhoCanApply] = useState("");
 
@@ -20,17 +21,18 @@ const PostJob = () => {
     try {
       // Prepare data object to send to the server
       const data = {
-        title,
+        title: title,
         company: companyName,
-        location,
-        category,
-        ctc,
-        aboutCompany,
-        whoCanApply,
+        location: location,
+        duration: duration,
+        category: category,
+        CTC: CTC,
+        aboutCompany: aboutCompany,
+        whoCanApply: whoCanApply,
       };
       // Post data to the server
       const response = await axios.post(
-        "https://intern-backend-fop1.onrender.com/api/job/post",
+        "https://internshala-clone-backend.onrender.com/api/job/post",
         // "http://localhost:5000/api/job/post",
         data
       );
@@ -92,6 +94,7 @@ const PostJob = () => {
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
+              
               <div className="relative mb-4">
                 <label htmlFor="category" className="leading-7 text-sm text-gray-600">
                   Category
@@ -106,37 +109,37 @@ const PostJob = () => {
                 />
               </div>
               <div className="relative mb-4">
-                <label htmlFor="stipend" className="leading-7 text-sm text-gray-600">
+                <label htmlFor="CTC" className="leading-7 text-sm text-gray-600">
                  CTC
                 </label>
                 <input
                   type="text"
-                  id="ctc"
-                  name="ctc"
-                  value={ctc}
-                  onChange={(e) => setCtc(e.target.value)}
+                  id="CTC"
+                  name="CTC"
+                  value={CTC}
+                  onChange={(e) => setCTC(e.target.value)}
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
               <div className="relative mb-4">
-                <label htmlFor="aboutcompany" className="leading-7 text-sm text-gray-600">
+                <label htmlFor="aboutCompany" className="leading-7 text-sm text-gray-600">
                   About the Company 
                 </label>
                 <textarea
-                  id="aboutcompany"
-                  name="aboutcompany"
+                  id="aboutCompany"
+                  name="aboutCompany"
                   value={aboutCompany}
                   onChange={(e) => setAboutCompany(e.target.value)}
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                 ></textarea>
               </div>
               <div className="relative mb-4">
-                <label htmlFor="whocanapply" className="leading-7 text-sm text-gray-600">
+                <label htmlFor="whoCanApply" className="leading-7 text-sm text-gray-600">
                   Who Can Apply
                 </label>
                 <textarea
-                  id="whocanapply"
-                  name="whocanapply"
+                  id="whoCanApply"
+                  name="whoCanApply"
                   value={whoCanApply}
                   onChange={(e) => setWhoCanApply(e.target.value)}
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"

@@ -9,10 +9,11 @@ const PostInternship = () => {
   const [title, setTitle] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [location, setLocation] = useState("");
+  const [duration, setDuration] = useState("");
   const [category, setCategory] = useState("");
   const [stipend, setStipend] = useState("");
   const [aboutCompany, setAboutCompany] = useState("");
-  const [whoCanApply, setWhoCanApply] = useState("");
+  const [whocanapply, setWhocanapply] = useState("");
 
   // Function to handle form submission
   const sendData = async (e) => {
@@ -23,14 +24,15 @@ const PostInternship = () => {
         title,
         company: companyName,
         location,
+        duration,
         category,
         stipend,
         aboutCompany,
-        whoCanApply,
+        whocanapply,
       };
       // Post data to the server
       const response = await axios.post(
-        "https://intern-backend-fop1.onrender.com/api/internship/post",
+        "https://internshala-clone-backend.onrender.com/api/internship/post",
         // "http://localhost:5000/api/internship/post",
         data
       );
@@ -93,6 +95,19 @@ const PostInternship = () => {
                 />
               </div>
               <div className="relative mb-4">
+                <label htmlFor="duration" className="leading-7 text-sm text-gray-600">
+                  Duration
+                </label>
+                <input
+                  type="text"
+                  id="duration"
+                  name="duration"
+                  value={duration}
+                  onChange={(e) => setDuration(e.target.value)}
+                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+              <div className="relative mb-4">
                 <label htmlFor="category" className="leading-7 text-sm text-gray-600">
                   Category
                 </label>
@@ -130,18 +145,18 @@ const PostInternship = () => {
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                 ></textarea>
               </div>
-              <div className="relative mb-4">
+              {/* <div className="relative mb-4">
                 <label htmlFor="whocanapply" className="leading-7 text-sm text-gray-600">
                   Who Can Apply
                 </label>
                 <textarea
                   id="whocanapply"
                   name="whocanapply"
-                  value={whoCanApply}
-                  onChange={(e) => setWhoCanApply(e.target.value)}
+                  value={whocanapply}
+                  onChange={(e) => setWhocanapply(e.target.value)}
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                 ></textarea>
-              </div>
+              </div> */}
               <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                 Posting Internship
               </button>
